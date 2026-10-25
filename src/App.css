@@ -1,0 +1,22 @@
+
+.app-shell {
+  min-height: 100vh;
+  background: #08090b;
+}
+
+.page-scroll-area {
+  min-width: 0;
+  width: 100%;
+}
+
+.placeholder-section {
+  min-height: 65svh;
+  border-top: 1px solid #202126;
+  background:
+    radial-gradient(
+      ellipse at 85% 50%,
+      rgb(227 38 54 / 6%),
+      transparent 45%
+    ),
+    #0b0c0f;
+}

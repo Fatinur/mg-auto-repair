@@ -1,0 +1,231 @@
+
+.hero-section {
+  min-height: calc(100svh - 76px);
+  background:
+    radial-gradient(ellipse at 50% 28%, rgb(88 17 24 / 20%), transparent 52%),
+    linear-gradient(145deg, #0c0d10, #08090b 72%);
+}
+
+.hero-glow {
+  position: absolute;
+  z-index: -1;
+  top: 16%;
+  right: -120px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgb(227 38 54 / 11%);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.hero-inner {
+  grid-template-areas:
+    "visual"
+    "copy";
+  grid-template-rows: auto 1fr;
+  align-content: center;
+  padding-top: 12px;
+  padding-bottom: 40px;
+}
+
+.hero-visual {
+  position: relative;
+  grid-area: visual;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1.45;
+  margin: 0 auto 8px;
+}
+
+.hero-image-glow {
+  position: absolute;
+  inset: 25% 15% 8%;
+  border-radius: 50%;
+  background: rgb(227 38 54 / 13%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.hero-car-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  animation: car-enter 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-image-fade {
+  pointer-events: none;
+}
+
+.hero-copy {
+  grid-area: copy;
+  align-self: start;
+}
+
+.hero-button {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+}
+
+.hero-button-primary {
+  background: #e32636;
+  color: white;
+  box-shadow: 0 7px 28px rgb(227 38 54 / 15%);
+}
+
+.hero-button-primary:hover {
+  background: #c91d2c;
+}
+
+.hero-button-secondary {
+  border-color: #34353b;
+  background: rgb(255 255 255 / 2%);
+  color: #f1f1f3;
+}
+
+.hero-button-secondary:hover {
+  border-color: #6b6c73;
+}
+
+.hero-scroll {
+  position: absolute;
+  right: max(32px, calc((100vw - 1200px) / 2));
+  bottom: 20px;
+  align-items: center;
+  gap: 10px;
+  color: #777880;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+  text-decoration: none;
+}
+
+.hero-scroll svg {
+  color: #e32636;
+  font-size: 16px;
+}
+
+/* Car image entrance animation */
+@keyframes car-enter {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "visual copy";
+    grid-template-rows: 1fr;
+    align-items: center;
+    gap: 16px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+
+  .hero-visual {
+    aspect-ratio: 0.85;
+    margin: 0;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-inner {
+    grid-template-columns: 0.95fr 1.05fr;
+    grid-template-areas: "copy visual";
+    grid-template-rows: 1fr;
+    align-items: center;
+    gap: 0;
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .hero-copy {
+    padding-bottom: 8px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(3rem, 5.1vw, 4.5rem);
+  }
+
+  .hero-visual {
+    width: 120%;
+    max-width: none;
+    aspect-ratio: 1.12;
+    margin: 0 0 0 -10%;
+    transform: translateY(8px);
+  }
+
+  .hero-car-image {
+    top: 0;
+    left: -30%;
+    width: 300%;
+    height: 110%;
+    object-fit: unset;
+    object-position: center;
+  }
+}
+
+@media (max-height: 740px) and (min-width: 900px) {
+  .hero-inner {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.6rem, 4.4vw, 3.8rem);
+  }
+
+  .hero-copy > p:not(:first-child) {
+    margin-top: 14px;
+  }
+
+  .hero-visual {
+    max-height: 65vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-button {
+    transition: none;
+  }
+
+  .hero-car-image {
+    animation: none;
+  }
+}
